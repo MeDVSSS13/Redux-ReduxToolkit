@@ -1,6 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
-import { increment, decrement, incrementByAmount } from "./slices/counterSlice";
+import {
+	increment,
+	decrement,
+	incrementByAmount,
+	reset,
+} from "./slices/counterSlice";
 import { changeLogged } from "./slices/isLoggedSlice";
 // store - is an object that hold the application state {}
 function App() {
@@ -20,9 +25,10 @@ function App() {
 			<h2>Count is: {count}</h2>
 			<button onClick={() => dispatch(increment())}>+</button>
 
-			<button onClick={() => dispatch({ type: "INCREMENT_BY", payload: 10 })}>
+			<button onClick={() => dispatch(incrementByAmount(5))}>
 				Increment by amount
 			</button>
+			<button onClick={() => dispatch(reset())}>Reset</button>
 			<div></div>
 			{isLogged ? (
 				<button onClick={() => dispatch(changeLogged())}>Sign out</button>
